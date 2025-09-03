@@ -14,6 +14,33 @@ int main() {
 
 It generates x86_64 assembly code, which can be assembled and linked to produce a Linux executable. Only integer arithmetic expressions are supported.
 
+## Project Structure
+
+```
+min_cc/
+├── Cargo.toml         # Rust project manifest
+├── src/
+│   ├── main.rs        # Entry point: orchestrates compilation
+│   ├── lexer.rs       # Tokenizer for C source code
+│   ├── parser.rs      # Recursive descent parser for arithmetic expressions
+│   ├── ast.rs         # AST (Abstract Syntax Tree) definitions
+│   ├── codegen.rs     # x86_64 assembly code generator
+│   └── token.rs       # Token definitions
+├── examples/
+│   └── test.c         # Example C file for testing
+└── run.sh             # Quick start script (optional)
+```
+
+**Key files:**
+- `src/main.rs`: Reads input, runs the compiler pipeline, writes output.
+- `src/lexer.rs`: Splits C source into tokens.
+- `src/parser.rs`: Parses tokens into an AST.
+- `src/ast.rs`: Defines the AST structure.
+- `src/codegen.rs`: Converts AST to assembly code.
+- `src/token.rs`: Token types used by the lexer and parser.
+- `examples/test.c`: Example input file.
+- `run.sh`: Script to build and run the project quickly.
+
 ## Requirements
 
 - Rust (for building min_cc)
